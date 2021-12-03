@@ -57,6 +57,7 @@
       :showAllResults="showAllResults"
       @hit="handleHit"
       @listItemBlur="handleChildBlur"
+      @hide-dropdown="hideList"
       :highlightClass='highlightClass'
       :disabledValues="disabledValues"
       :vbtUniqueId="id"
@@ -171,7 +172,7 @@ export default {
     highlightClass: String,
     isFocusedOnCreate: {
       type: Boolean,
-      default: false
+      default: true
     }
   },
 
@@ -234,9 +235,13 @@ export default {
       this.$emit('hit', evt.data)
 
       if (this.autoClose) {
-        this.$refs.input.blur()
-        this.isFocused = false
+        this.hideList()
       }
+    },
+
+    hideList() {
+      this.$refs.input.blur()
+      this.isFocused = false
     },
 
     handleChildBlur() {

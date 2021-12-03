@@ -178,7 +178,11 @@ export default {
       this.$emit('hit', item)
       evt.preventDefault()
     },
+
     hitActiveListItem() {
+      if (this.activeListItem < 0) {
+        this.$emit('hide-dropdown')
+      }
       if (this.activeListItem >= 0) {
         this.$emit('hit', this.matchedItems[this.activeListItem])
       }
