@@ -168,7 +168,11 @@ export default {
     placeholder: String,
     prepend: String,
     append: String,
-    highlightClass: String
+    highlightClass: String,
+    isFocusedOnCreate: {
+      type: Boolean,
+      default: false
+    }
   },
 
   computed: {
@@ -284,6 +288,10 @@ export default {
   },
 
   mounted() {
+    if (this.isFocusedOnCreate) {
+      this.handleChildBlur()
+    }
+
     this.$_ro = new ResizeObserver(e => {
       this.resizeList(this.$refs.input)
     })
