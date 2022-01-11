@@ -34,7 +34,11 @@
         @input="handleInput($event.target.value)"
         @keydown.esc="handleEsc($event.target.value)"
         @keyup="$emit('keyup', $event)"
-      />
+      >
+      <div v-if="$slots.reset" class="input-group-reset">
+        <slot name="reset" />
+      </div>
+      </input>
       <div v-if="$slots.append || append" class="input-group-append">
         <slot name="append">
           <span class="input-group-text">{{ append }}</span>
