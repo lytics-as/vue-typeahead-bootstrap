@@ -28,6 +28,7 @@
         :aria-label="(!ariaLabelledBy) ? placeholder : false"
         :value="inputValue"
         :disabled="disabled"
+        autocomplete="off"
         @focus="isFocused = true"
         @blur="handleFocusOut"
         @input="handleInput($event.target.value)"
